@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { ChangeEvent, FC } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 
 import ClientOnly from '../components/ClientOnly';
 import RepositoryIssues from '../components/RepositoryIssues';
@@ -9,9 +9,11 @@ import { Container, Main, SearchInput } from '../styles';
 const Issues: FC = () => {
 	const router = useRouter();
 	const { owner, name } = router.query as { owner: string; name: string };
+	const [searchTerm, setSearchTerm] = useState<string>('');
 
 	const onQueryStringChange = (event: ChangeEvent<HTMLInputElement>) => {
 		console.log(event.currentTarget.value);
+		setSearchTerm(event.currentTarget.value);
 	};
 
 	return (
@@ -29,7 +31,7 @@ const Issues: FC = () => {
 				/>
 
 				<ClientOnly>
-					<RepositoryIssues owner={owner} name={name} />
+					<RepositoryIssues searchTerm={searchTerm} owner={owner} name={name} />
 				</ClientOnly>
 			</Main>
 		</Container>

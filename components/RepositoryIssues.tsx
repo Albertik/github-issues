@@ -23,16 +23,20 @@ const RepositoryName = styled.span`
 	padding: ${(props: ThemeProps) => getSpace(2, props)};
 `;
 
+const Description = styled.p``;
+
 const IssueStatus = styled.p``;
 
 type RepositoryIssuesProps = {
 	name: string;
 	owner: string;
+	searchTerm: string;
 };
 
 const RepositoryIssues: FC<RepositoryIssuesProps> = ({
 	owner,
 	name,
+	searchTerm,
 }: RepositoryIssuesProps) => {
 	const { data, loading, error, fetchMore } = useGet20IssuesQuery({
 		variables: {
@@ -53,6 +57,12 @@ const RepositoryIssues: FC<RepositoryIssuesProps> = ({
 
 	//TODO fix casting, better use guards
 	const issues = data?.repository?.issues.nodes as Issue[];
+	function escapeRegExp(string: string) {
+		return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+	}
+	const filteredIssues = issues?.filter((issue) =>
+		issue.title.match(new RegExp(escapeRegExp(searchTerm), 'igm'))
+	);
 
 	return (
 		<Repositories>
@@ -62,7 +72,8 @@ const RepositoryIssues: FC<RepositoryIssuesProps> = ({
 				</RepositoryName>{' '}
 				repository issues
 			</Title>
-			{issues?.map((issue) => (
+			<Description>{data?.repository?.description}</Description>
+			{filteredIssues?.map((issue) => (
 				<Card key={issue.number}>
 					<h3>{issue.title}</h3>
 					<p>{issue.body}</p>

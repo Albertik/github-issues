@@ -25,5 +25,6 @@ query get20Issues($owner: String!, $name: String!, $cursor: String) {
 				endCursor
 			}
 		}
+		description
 	}
 }
