@@ -1,3 +1,7 @@
+Visit https://github-issues-eight.vercel.app/ to check it live
+
+- Development
+
 Create `.env` file and add
 `NEXT_PUBLIC_GITHUB_PERSONAL_ACCESS_TOKEN=your personal access token`
 this will expose your token to the client, better to not expose it and instead do query server side.
