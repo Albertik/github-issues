@@ -7,7 +7,7 @@ import {
 	SearchResultItemEdge,
 	useGetOrganizationRepositoriesQuery,
 } from '../apollo/generated/graphql-generated';
-import { Card } from './RepositoryIssues';
+import { Card } from '../styles';
 
 const Repositories = styled.div`
 	display: flex;

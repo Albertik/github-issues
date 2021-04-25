@@ -1,32 +1,40 @@
-import Head from 'next/head';
 import styled from '@emotion/styled';
-import React, { FC } from 'react';
+import Head from 'next/head';
 import Link from 'next/link';
+import React, { FC } from 'react';
+
+import { ThemeProps } from '../styles/theme';
+import { getSpace } from '../styles/utils/getters';
 
 const Container = styled.div`
 	min-height: 100vh;
-	padding: 0 0.5rem;
+	padding: 0 ${(props: ThemeProps) => getSpace(3, props)};
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 `;
+
 const Main = styled.main`
-	padding: 5rem 0;
+	padding: ${(props: ThemeProps) => getSpace(2, props)} 0;
 	flex: 1;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 `;
+
 const Title = styled.h1`
 	margin: 0;
-	line-height: 1.15;
-	font-size: 4rem;
+	line-height: ${(props: ThemeProps) => getSpace(7, props)};
+	font-size: ${(props: ThemeProps) => getSpace(7, props)};
 `;
+
 const SearchOrganizationLink = styled.a`
-	padding: 20px;
-	font-size: 20px;
+	padding: ${(props: ThemeProps) => getSpace(5, props)};
+	font-size: ${(props: ThemeProps) => getSpace(5, props)};
 	cursor: pointer;
 `;
 
@@ -38,14 +46,14 @@ const Home: FC = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<Main>
-				<Title>APC assignement 👋</Title>
-				<Link href="/searchOrganizationRepositories">
+			<Link href="/searchOrganizationRepositories">
+				<Main>
+					<Title>Hi, APC 👋</Title>
 					<SearchOrganizationLink>
 						Search organization&apos;s repositories 🕵️‍♂️
 					</SearchOrganizationLink>
-				</Link>
-			</Main>
+				</Main>
+			</Link>
 		</Container>
 	);
 };

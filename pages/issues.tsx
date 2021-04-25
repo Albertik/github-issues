@@ -1,9 +1,10 @@
-import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React, { ChangeEvent, FC } from 'react';
+
 import ClientOnly from '../components/ClientOnly';
 import RepositoryIssues from '../components/RepositoryIssues';
-import { Container, Main, SearchInput } from './searchOrganizationRepositories';
+import { Container, Main, SearchInput } from '../styles';
 
 const Issues: FC = () => {
 	const router = useRouter();

@@ -5,6 +5,9 @@ import {
 	Issue,
 	useGet20IssuesQuery,
 } from '../apollo/generated/graphql-generated';
+import { FetchMoreButton, Card } from '../styles';
+import { ThemeProps } from '../styles/theme';
+import { getColor, getSpace } from '../styles/utils/getters';
 
 const Repositories = styled.div`
 	display: flex;
@@ -15,26 +18,9 @@ const Repositories = styled.div`
 const Title = styled.h1``;
 
 const RepositoryName = styled.span`
-	color: #210707;
-	background: aquamarine;
-	padding: 8px;
-`;
-
-export const Card = styled.div`
-	background: white;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	transition: 0.3s;
-	padding: 2px 16px;
-	margin: 8px 0;
-`;
-
-const FetchMoreButton = styled.button`
-	padding: 20px;
-	background: #a08080;
-	border: none;
-	font-size: 36px;
-	margin: 20px 0;
-	cursor: pointer;
+	color: ${(props: ThemeProps) => getColor('primary', 6, props)};
+	background: ${(props: ThemeProps) => getColor('secondary', 1, props)};
+	padding: ${(props: ThemeProps) => getSpace(2, props)};
 `;
 
 const IssueStatus = styled.p``;

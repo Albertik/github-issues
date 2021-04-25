@@ -1,39 +1,9 @@
-import styled from '@emotion/styled';
 import Head from 'next/head';
 import React, { ChangeEvent, FC, useState } from 'react';
-import { up } from 'styled-breakpoints';
 
 import ClientOnly from '../components/ClientOnly';
 import OrganizationRepositories from '../components/OrganizationRepositories';
-
-export const Container = styled.div`
-	background: #d5eced;
-`;
-export const Main = styled.main`
-	padding: 20px;
-	min-height: 100vh;
-
-	${up('sm')} {
-		padding: 50px;
-	}
-`;
-
-export const SearchInput = styled.input`
-	width: 100%;
-	height: 76px;
-	border: none;
-	background: #abb8ed;
-	font-size: 36px;
-	line-height: 76px;
-	padding: 10px;
-	border-radius: 4px;
-	margin-bottom: 16px;
-
-	&:focus {
-		border: 4px solid #061718;
-		outline: none;
-	}
-`;
+import { Container, Main, SearchInput } from '../styles';
 
 const SearchOrganizationRepositories: FC = () => {
 	const [queryString, setQueryString] = useState<string>('');
