@@ -1,0 +1,20 @@
+overwrite: true
+schema:
+  - https://api.github.com/graphql:
+      headers:
+        Authorization: Bearer ${NEXT_PUBLIC_GITHUB_PERSONAL_ACCESS_TOKEN}
+documents: ./apollo/graphql/*.graphql
+generates:
+  apollo/generated/graphql-generated.tsx:
+    plugins:
+      - fragment-matcher
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+      - typescript-resolvers
+    config:
+      apolloClientVersion: 3
+      withHooks: true
+      contextType: ../client#Context
+      useIndexSignature: true
+      preResolveTypes: true

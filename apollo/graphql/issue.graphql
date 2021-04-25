@@ -1,0 +1,25 @@
+fragment Issue on Issue {
+	number
+	body: bodyText
+	title
+	state
+	labels(first: 5) {
+		nodes {
+			name
+			color
+		}
+	}
+}
+
+query get20Issues($owner: String!, $name: String!, $cursor: String) {
+	repository(owner: $owner, name: $name) {
+		issues(first: 20, after: $cursor, orderBy: { field: CREATED_AT, direction: DESC }) {
+			nodes {
+				...Issue
+			}
+			pageInfo {
+				endCursor
+			}
+		}
+	}
+}

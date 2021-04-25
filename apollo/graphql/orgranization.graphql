@@ -1,0 +1,19 @@
+fragment Repository on Repository {
+	id
+	name
+	description
+	owner {
+		login
+	}
+}
+
+query getOrganizationRepositories($queryString: String!) {
+	search(query: $queryString, type: REPOSITORY, first: 10) {
+		repositoryCount
+		edges {
+			node {
+				...Repository
+			}
+		}
+	}
+}
