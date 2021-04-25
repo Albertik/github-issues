@@ -1,8 +1,12 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import React from 'react';
+import React, { FC } from 'react';
 
-import { RepositoryFragment, SearchResultItemEdge, useGetOrganizationRepositoriesQuery } from '../apollo/generated/graphql-generated';
+import {
+	RepositoryFragment,
+	SearchResultItemEdge,
+	useGetOrganizationRepositoriesQuery,
+} from '../apollo/generated/graphql-generated';
 import { Card } from './RepositoryIssues';
 
 const Repositories = styled.div`
@@ -15,8 +19,10 @@ type OrganizationRepositoriesProps = {
 	queryString: string;
 };
 
-export default function OrganizationRepositories({ queryString }: OrganizationRepositoriesProps) {
-	const { data, loading, error, fetchMore } = useGetOrganizationRepositoriesQuery({
+const OrganizationRepositories: FC<OrganizationRepositoriesProps> = ({
+	queryString,
+}: OrganizationRepositoriesProps) => {
+	const { data, loading, error } = useGetOrganizationRepositoriesQuery({
 		variables: {
 			queryString,
 		},
@@ -39,7 +45,10 @@ export default function OrganizationRepositories({ queryString }: OrganizationRe
 	return (
 		<Repositories>
 			{repositories.map((repository) => (
-				<Link key={repository.node.id} href={`/issues?owner=${repository.node.owner.login}&name=${repository.node.name}`}>
+				<Link
+					key={repository.node.id}
+					href={`/issues?owner=${repository.node.owner.login}&name=${repository.node.name}`}
+				>
 					<a>
 						<Card>
 							<h3>{repository.node.name}</h3>
@@ -50,4 +59,6 @@ export default function OrganizationRepositories({ queryString }: OrganizationRe
 			))}
 		</Repositories>
 	);
-}
+};
+
+export default OrganizationRepositories;

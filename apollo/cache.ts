@@ -17,7 +17,7 @@ export const cache = new InMemoryCache({
 						const { nodes, ...rest } = incoming;
 						// We only need to merge the nodes array.
 						// The rest of the fields (pagination) should always be overwritten by incoming
-						let result = rest;
+						const result = rest;
 						result.nodes = [...existing.nodes, ...nodes];
 						return result;
 					},
@@ -27,6 +27,6 @@ export const cache = new InMemoryCache({
 	},
 });
 
-export const addTypePolicies = (typePolicies: TypePolicies) => {
+export const addTypePolicies = (typePolicies: TypePolicies): void => {
 	cache.policies.addTypePolicies(typePolicies);
 };

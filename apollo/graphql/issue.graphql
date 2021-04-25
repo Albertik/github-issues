@@ -13,7 +13,11 @@ fragment Issue on Issue {
 
 query get20Issues($owner: String!, $name: String!, $cursor: String) {
 	repository(owner: $owner, name: $name) {
-		issues(first: 20, after: $cursor, orderBy: { field: CREATED_AT, direction: DESC }) {
+		issues(
+			first: 20
+			after: $cursor
+			orderBy: { field: CREATED_AT, direction: DESC }
+		) {
 			nodes {
 				...Issue
 			}

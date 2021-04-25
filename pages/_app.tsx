@@ -1,3 +1,4 @@
+import React, { FC } from 'react';
 import { AppProps } from 'next/app';
 import { ApolloProvider } from '@apollo/client';
 import client from '../apollo/client';
@@ -14,7 +15,7 @@ const theme = {
 	},
 };
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
 	return (
 		<ThemeProvider theme={theme}>
 			<ApolloProvider client={client}>
@@ -22,6 +23,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 			</ApolloProvider>
 		</ThemeProvider>
 	);
-}
+};
 
 export default MyApp;

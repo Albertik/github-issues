@@ -1,5 +1,5 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
-import { addTypePolicies, cache } from './cache';
+import { cache } from './cache';
 
 export interface Context {
 	cache: InMemoryCache;

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Head from 'next/head';
-import { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import { up } from 'styled-breakpoints';
 
 import ClientOnly from '../components/ClientOnly';
@@ -35,7 +35,7 @@ export const SearchInput = styled.input`
 	}
 `;
 
-export default function SearchOrganizationRepositories() {
+const SearchOrganizationRepositories: FC = () => {
 	const [queryString, setQueryString] = useState<string>('');
 
 	const onQueryStringChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -47,12 +47,16 @@ export default function SearchOrganizationRepositories() {
 	return (
 		<Container>
 			<Head>
-				<title>Search For Organization's repository</title>
-				<link rel='icon' href='/favicon.ico' />
+				<title>Search For Organization&apos;s repository</title>
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<Main>
-				<SearchInput placeholder='Enter organization name' type='text' onChange={onQueryStringChange} />
+				<SearchInput
+					placeholder="Enter organization name"
+					type="text"
+					onChange={onQueryStringChange}
+				/>
 
 				<ClientOnly>
 					<OrganizationRepositories queryString={queryString} />
@@ -60,4 +64,6 @@ export default function SearchOrganizationRepositories() {
 			</Main>
 		</Container>
 	);
-}
+};
+
+export default SearchOrganizationRepositories;

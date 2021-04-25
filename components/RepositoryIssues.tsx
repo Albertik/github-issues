@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
+import React, { FC } from 'react';
 
-import { Issue, Maybe, useGet20IssuesQuery } from '../apollo/generated/graphql-generated';
+import {
+	Issue,
+	useGet20IssuesQuery,
+} from '../apollo/generated/graphql-generated';
 
 const Repositories = styled.div`
 	display: flex;
@@ -40,7 +44,10 @@ type RepositoryIssuesProps = {
 	owner: string;
 };
 
-export default function RepositoryIssues({ owner, name }: RepositoryIssuesProps) {
+const RepositoryIssues: FC<RepositoryIssuesProps> = ({
+	owner,
+	name,
+}: RepositoryIssuesProps) => {
 	const { data, loading, error, fetchMore } = useGet20IssuesQuery({
 		variables: {
 			name,
@@ -74,13 +81,22 @@ export default function RepositoryIssues({ owner, name }: RepositoryIssuesProps)
 					<h3>{issue.title}</h3>
 					<p>{issue.body}</p>
 					<IssueStatus>
-						Issue is {issue.state.toLowerCase()} {issue.state === 'CLOSED' ? '❌' : '🙌 🙏'}
+						Issue is {issue.state.toLowerCase()}{' '}
+						{issue.state === 'CLOSED' ? '❌' : '🙌 🙏'}
 					</IssueStatus>
 				</Card>
 			))}
-			<FetchMoreButton onClick={() => fetchMore({ variables: { cursor: data?.repository?.issues.pageInfo.endCursor } })}>
+			<FetchMoreButton
+				onClick={() =>
+					fetchMore({
+						variables: { cursor: data?.repository?.issues.pageInfo.endCursor },
+					})
+				}
+			>
 				Load more...
 			</FetchMoreButton>
 		</Repositories>
 	);
-}
+};
+
+export default RepositoryIssues;

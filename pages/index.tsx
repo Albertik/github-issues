@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
 
 const Container = styled.div`
@@ -30,20 +30,24 @@ const SearchOrganizationLink = styled.a`
 	cursor: pointer;
 `;
 
-export default function Home() {
+const Home: FC = () => {
 	return (
 		<Container>
 			<Head>
 				<title>APC assignment</title>
-				<link rel='icon' href='/favicon.ico' />
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<Main>
 				<Title>APC assignement 👋</Title>
-				<Link href='/searchOrganizationRepositories'>
-					<SearchOrganizationLink>Search organization's repositories 🕵️‍♂️</SearchOrganizationLink>
+				<Link href="/searchOrganizationRepositories">
+					<SearchOrganizationLink>
+						Search organization&apos;s repositories 🕵️‍♂️
+					</SearchOrganizationLink>
 				</Link>
 			</Main>
 		</Container>
 	);
-}
+};
+
+export default Home;

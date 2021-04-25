@@ -1,0 +1,11 @@
+# Ignore artifacts:
+.next
+
+# Ignore node_modules
+node_modules
+
+# Ignore public
+public
+
+# Ignore generated
+apollo/generated
