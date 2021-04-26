@@ -27,7 +27,7 @@ const Description = styled.p``;
 
 const IssueStatus = styled.p``;
 
-type RepositoryIssuesProps = {
+export type RepositoryIssuesProps = {
 	name: string;
 	owner: string;
 	searchTerm: string;
@@ -38,6 +38,7 @@ const RepositoryIssues: FC<RepositoryIssuesProps> = ({
 	name,
 	searchTerm,
 }: RepositoryIssuesProps) => {
+	console.log(owner, name);
 	const { data, loading, error, fetchMore } = useGet20IssuesQuery({
 		variables: {
 			name,
