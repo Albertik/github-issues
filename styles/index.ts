@@ -47,6 +47,7 @@ export const Card = styled.div`
 	padding: 2px ${(props: ThemeProps) => getSpace(4, props)};
 	margin: ${(props: ThemeProps) => getSpace(2, props)} 0;
 	white-space: pre-wrap;
+	overflow: auto;
 `;
 
 export const FetchMoreButton = styled.button`
