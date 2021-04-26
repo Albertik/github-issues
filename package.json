@@ -6,6 +6,7 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
+		"test": "jest",
 		"codegen": "graphql-codegen --config codegen.yml -r dotenv/config",
 		"prettier": "prettier --write ."
 	},
@@ -28,20 +29,27 @@
 		"@graphql-codegen/typescript-operations": "1.17.16",
 		"@graphql-codegen/typescript-react-apollo": "2.2.4",
 		"@graphql-codegen/typescript-resolvers": "^1.19.1",
+		"@testing-library/dom": "^7.30.4",
+		"@testing-library/jest-dom": "^5.12.0",
+		"@testing-library/react": "^11.2.6",
+		"@types/node": "^14.14.41",
 		"@types/react": "^17.0.3",
 		"@typescript-eslint/eslint-plugin": "^4.22.0",
 		"@typescript-eslint/parser": "^4.22.0",
+		"babel-jest": "^26.6.3",
 		"eslint": "^7.25.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-react": "^7.23.2",
 		"husky": "^6.0.0",
+		"jest": "^26.6.3",
 		"prettier": "^2.2.1",
 		"pretty-quick": "^3.1.0",
 		"typescript": "^4.2.4"
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "pretty-quick --staged"
+			"pre-commit": "pretty-quick --staged",
+			"pre-push": "yarn test"
 		}
 	}
 }

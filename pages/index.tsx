@@ -49,7 +49,7 @@ const Home: FC = () => {
 			<Link href="/searchOrganizationRepositories">
 				<Main>
 					<Title>Hi, APC 👋</Title>
-					<SearchOrganizationLink>
+					<SearchOrganizationLink data-testid="linkText">
 						Search organization&apos;s repositories 🕵️‍♂️
 					</SearchOrganizationLink>
 				</Main>

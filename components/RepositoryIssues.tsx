@@ -55,8 +55,16 @@ const RepositoryIssues: FC<RepositoryIssuesProps> = ({
 		return null;
 	}
 
-	//TODO fix casting, better use guards
 	const issues = data?.repository?.issues.nodes as Issue[];
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const isIssue = (obj: any): obj is Issue => {
+		return obj && (obj as Issue).__typename === 'Issue';
+	};
+
+	if (issues.length && !isIssue(issues[0])) {
+		return null;
+	}
+
 	function escapeRegExp(string: string) {
 		return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 	}

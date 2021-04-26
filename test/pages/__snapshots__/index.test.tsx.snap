@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders without crashing 1`] = `
+<DocumentFragment>
+  <div
+    class="css-1bjqwbw"
+  >
+    <main
+      class="css-n1ih9h"
+    >
+      <h1
+        class="css-ih13jk"
+      >
+        Hi, APC 👋
+      </h1>
+      <a
+        class="css-12ol0na"
+        data-testid="linkText"
+      >
+        Search organization's repositories 🕵️‍♂️
+      </a>
+    </main>
+  </div>
+</DocumentFragment>
+`;
