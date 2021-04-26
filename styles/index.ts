@@ -18,14 +18,20 @@ export const Main = styled.main`
 
 export const SearchInput = styled.input`
 	width: 100%;
-	height: ${(props: ThemeProps) => getSpace(8, props)};
+	height: ${(props: ThemeProps) => getSpace(6, props)};
 	border: none;
 	background: ${(props: ThemeProps) => getColor('secondary', 1, props)};
-	font-size: ${(props: ThemeProps) => getSpace(6, props)};
-	line-height: ${(props: ThemeProps) => getSpace(8, props)};
+	font-size: ${(props: ThemeProps) => getSpace(4, props)};
+	line-height: ${(props: ThemeProps) => getSpace(6, props)};
 	padding: ${(props: ThemeProps) => getSpace(4, props)};
 	border-radius: ${(props: ThemeProps) => getSpace(1, props)};
 	margin-bottom: ${(props: ThemeProps) => getSpace(4, props)};
+
+	${up('sm')} {
+		font-size: ${(props: ThemeProps) => getSpace(6, props)};
+		line-height: ${(props: ThemeProps) => getSpace(8, props)};
+		height: ${(props: ThemeProps) => getSpace(8, props)};
+	}
 
 	&:focus {
 		border: ${(props: ThemeProps) => getSpace(1, props)} solid
